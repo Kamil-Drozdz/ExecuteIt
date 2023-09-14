@@ -31,8 +31,8 @@ function PageNavbar() {
 				</button>
 				<div className='flex space-x-2'>
 					{navbarItems.slice(1).map((item, index) => (
-						<button>
-							<Image key={index} src={item.src} width={24} height={24} alt={item.alt} className={`w-7 h-7 relative  brightness-[300]`} />
+						<button key={index}>
+							<Image src={item.src} width={24} height={24} alt={item.alt} className={`w-7 h-7 relative  brightness-[300]`} />
 						</button>
 					))}
 				</div>
