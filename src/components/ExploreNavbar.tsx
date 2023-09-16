@@ -1,5 +1,6 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import { useState } from 'react';
 
 const exploreCategories = [
 	{ name: 'Technology', src: '/technology.svg' },
@@ -11,6 +12,7 @@ const exploreCategories = [
 ];
 
 function ExploreNavbar() {
+	const [activeCategory, setActiveCategory] = useState('Technology');
 	return (
 		<>
 			<div className='relative px-4 mt-12'>
@@ -19,7 +21,12 @@ function ExploreNavbar() {
 			</div>
 			<nav className='w-full pl-5 pr-4 py-4 justify-start items-start gap-2 flex overflow-x-auto'>
 				{exploreCategories.map((category, index) => (
-					<button key={index} className='w-full px-4 py-2.5 bg-white bg-opacity-10 rounded-full justify-center items-center gap-2 flex'>
+					<button
+						onClick={() => {
+							setActiveCategory(category.name);
+						}}
+						key={index}
+						className={`w-full px-4 py-2.5  ${activeCategory === category.name ? 'bg-gray-500 border-white' : 'border-transparent'} border-[1px]  bg-white bg-opacity-10 rounded-full justify-center items-center gap-2 flex`}>
 						<Image src={category.src} className='w-4 h-4 relative brightness-0 invert' width={20} height={20} alt={`${category.name} icon`} />
 						<div className='text-gray-200 text-sm font-medium'>{category.name}</div>
 					</button>

@@ -26,14 +26,13 @@ export default async function launchPage({ params }: { params: { id: string } })
 		query: GET_LAUNCH,
 		variables: { launchId: id },
 	});
-	console.log(launch);
+
 	const renderLinks = () => {
 		return Object.entries(launch.links)
 			.slice(1)
 			.map(([key, value]) => {
 				if (value) {
 					let linkKey = key;
-					console.log(linkKey);
 					if (key === 'article_link') {
 						linkKey = 'article';
 					} else if (key === 'reddit_media') {
