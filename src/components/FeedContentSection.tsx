@@ -1,11 +1,8 @@
+import { getClient } from '@/lib/client';
+import { gql } from '@apollo/client';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface FeedContentSectionProps {
-	data: {
-		histories: History[];
-	};
-}
 interface History {
 	title: string;
 	id: string;
@@ -16,8 +13,23 @@ interface History {
 		wikipedia: string;
 	};
 }
+const GET_HISTORIES = gql`
+	query Histories($find: HistoryFind) {
+		histories(find: $find) {
+			title
+			id
+			details
+			links {
+				article
+				reddit
+				wikipedia
+			}
+		}
+	}
+`;
 
-const FeedContentSection = ({ data }: FeedContentSectionProps) => {
+const FeedContentSection = async () => {
+	const { data } = await getClient().query({ query: GET_HISTORIES });
 	return (
 		<section className='w-full text-white whitespace-pre-wrap mb-12'>
 			{data.histories.map((history: History) => (

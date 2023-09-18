@@ -48,7 +48,7 @@ export default async function HistoryPage({ params }: { params: { id: string } }
 		<>
 			<PageNavbar />
 			<main className='w-full whitespace-pre-wrap text-white'>
-				<Image src='https://via.placeholder.com/600x400' alt='main photo' width={600} height={400} className='w-full md:w-fit aspect-video' />
+				<Image src='https://via.placeholder.com/600x400' alt='main photo' width={600} height={400} className='w-full aspect-video' />
 				<div className='w-full px-5 pt-5 pb-4 flex-col justify-start items-start gap-3 flex'>
 					<div className=' flex-col justify-start items-start gap-2 flex'>
 						<div className=' justify-start items-center gap-1 flex'>

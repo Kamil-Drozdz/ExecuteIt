@@ -33,7 +33,7 @@ function BottomNavbar() {
 	const pathname = usePathname();
 
 	return (
-		<nav className='fixed bottom-0 w-full  px-6 py-2 bg-neutral-900 bg-opacity-80 border-t border-white border-opacity-5 backdrop-blur-[100px] justify-between items-start flex'>
+		<nav className='fixed bottom-0 max-w-[500px] w-full px-6 py-2 bg-neutral-900 bg-opacity-80 border-t border-white border-opacity-5 backdrop-blur-[100px] justify-between items-start flex'>
 			{navbarItems.map((item, index) => {
 				const isActive = pathname.includes(item.link);
 				return (

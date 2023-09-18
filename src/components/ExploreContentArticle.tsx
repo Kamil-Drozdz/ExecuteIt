@@ -1,15 +1,26 @@
-import Image from "next/image";
-import Link from "next/link";
+import { getClient } from '@/lib/client';
+import { gql } from '@apollo/client';
+import Image from 'next/image';
+import Link from 'next/link';
 
-interface ExploreContentArticleProps{
-    launches:Launch[]
-}
 interface Launch {
 	id: string;
 	mission_name: string;
 }
 
-const ExploreContentArticle = ({ launches }:ExploreContentArticleProps) => {
+const GET_LAUNCHES = gql`
+	query Launches($find: LaunchFind, $limit: Int) {
+		launches(find: $find, limit: $limit) {
+			id
+			mission_name
+		}
+	}
+`;
+const ExploreContentArticle = async () => {
+	const {
+		data: { launches },
+	} = await getClient().query({ query: GET_LAUNCHES, variables: { limit: 10 } });
+
 	return (
 		<article className='flex overflow-x-auto '>
 			{launches.map((launch: Launch) => (

@@ -38,7 +38,7 @@ function TopNavbar() {
 			<ul className='w-full justify-start  mb-4 items-center flex overflow-x-auto'>
 				{categories.map((category, index) => (
 					<li key={index} className={`p-4 border-b-2 ${activeCategory === category.name ? 'border-red-500' : 'border-gray-800'} justify-center items-center gap-2 flex`}>
-						<button className={`text-base font-semibold leading-[17px] ${activeCategory === category.name ? 'text-white' : 'text-gray-400'}`} onClick={() => setActiveCategory(category.name)}>
+						<button className={`text-base font-semibold leading-[17px] ${activeCategory === category.name ? 'text-white' : 'text-[#888888]'}`} onClick={() => setActiveCategory(category.name)}>
 							{category.name}
 						</button>
 					</li>
